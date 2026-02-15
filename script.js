@@ -1,4 +1,38 @@
 
+// API Fetch
+
+let url = "https://fdnd.directus.app/items/person"
+
+
+async function fetchData() {
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+
+        const data = await response.json();
+
+        return data.data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return [];
+    }
+}
+console.log(fetchData());
+
+
+// filter name
+
+
+
+
+
+
+
+
+
+
+
 // Compact header mode on scroll effect
 
     const header = document.querySelector('header');
