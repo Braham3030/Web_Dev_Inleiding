@@ -1,0 +1,232 @@
+
+*,*::before,*::after {
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: light dark;
+    
+    background: var(--bgColor);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    top: 0;
+    width: 100%;
+    height: 11em;
+    border-radius: 0px 0px 16px 16px; ;
+    z-index: 2000;
+
+    /* From https://css.glass */
+background: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+border: 1px solid light-dark(rgba(0, 0, 0, 0.23), rgba(255, 255, 255, 0.23));
+
+
+}
+
+header.compact {
+    height: 5em;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* div:first-of-type {
+    border: 5px solid purple;
+    background-color: yellow;
+    display: flex;
+    position: relative;
+    top: 20em;
+    height: 200vh;
+    width: 60em;
+} */
+
+h1 {
+    font-size: 40px;
+    color: light-dark(black, white);
+    
+    text-shadow: 5px 2px 300px light-dark(black, white);
+
+    color: var(--bgColor);
+  filter: 
+    invert(1) 
+    grayscale(1) 
+    brightness(calc(var(--cutoff) / 100))
+    contrast(9000)
+  ;
+}
+
+header.compact h1 {
+    font-size: 28px;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 20%;
+    font-size: 24px;
+    border: 2px solid red;
+}
+
+header.compact ul {
+    font-size: 16px;
+    width: 20%;
+}
+li {
+    border-radius: 16px;
+    padding: 0.5em 1em;
+
+
+
+        /* From https://css.glass */
+    background: light-dark(rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.22));
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid light-dark(rgba(0, 0, 0, 0.23), rgba(255, 255, 255, 0.23));
+
+
+    box-shadow: 0 5px 90px light-dark(white, black);
+
+    
+}
+
+
+li:hover {
+
+    background-image: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(200, 245, 255, 0.4) 50%,
+    rgba(200, 200, 245, 0.4) 55%,
+    transparent 70%
+);
+
+background-size: 300% 100%;
+background-position: 0% 0%;
+animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: -100% 0%;
+    }
+}
+
+
+
+
+article {
+    margin-top: 20em;
+    margin-left: 2em;
+    border: 4px solid green;
+    width: 50em;
+    height: auto;
+
+
+
+
+        /* From https://css.glass */
+    background: light-dark(rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.35));
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.09));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* mouse-glow effect */
+
+.mouse-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* background: radial-gradient(circle, rgba(355, 355, 355, 0.5) 0%, rgba(0, 0, 0, 0.05) 70%, transparent 70%); */
+    background: white;
+    /* filter: blur(40px); */
+    transform: translate(-50%, -50%);
+    /* mix-blend-mode: screen; */
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    box-shadow: 0px 0px 40px rgba(255, 255, 255, 1);
+    animation: shadow-pulse 5s infinite;
+    transition: transform 0.8s ease-in-out;
+}
+
+@keyframes shadow-pulse {
+    0% {
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        transition: rotate(0deg);
+
+        width: 50px;
+        height: 50px;
+    }
+    50% {
+        box-shadow: 0px 0px 40px rgba(255, 255, 255, 1);
+        transition: rotate(360deg);
+
+        width: 40px;
+        height: 40px;
+    }
+    100% {
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        transition: rotate(0deg);
+
+        width: 50px;
+        height: 50px;
+    }
+}
+
