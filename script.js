@@ -23,9 +23,61 @@ console.log(fetchData());
 
 // filter name
 
+async function nameFilter() {
+    const person = await fetchData();
+
+    const allPerson = person.map(person => person.name);
+    console.log(allPerson);
+
+    const personWithName = person.filter(person => person.name != null && person.name !== '');
+    console.log(personWithName);
+}
+
+nameFilter();
 
 
+// random naming
 
+async function randomName() {
+    const person = await fetchData();
+
+    const activePerson = person.filter(person => person.name && person.name.trim() !== '');
+    
+    if (activePerson.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * activePerson.length);
+
+    const randomPerson = activePerson[randomIndex];
+
+    const nameElement = document.querySelector('.name');
+    const nicknameElement = document.querySelector('.nickname');
+    const bioElement = document.querySelector('.bio');
+    const birthDateElement = document.querySelector('.birthDate');
+    const favEmojiElement = document.querySelector('.favEmoji');
+
+    if (nameElement) {
+        nameElement.textContent = randomPerson.name
+    }
+    console.log(randomPerson.name);
+
+    if (nicknameElement) {
+        nicknameElement.textContent = "Nickname: " + (randomPerson.nickname || 'No nickname available.');
+    }
+
+    if (bioElement) {
+        bioElement.textContent = "Bio: " + (randomPerson.bio || 'No bio available.');
+    }
+
+    if (birthDateElement) {
+        birthDateElement.textContent = "Birthday: " + (randomPerson.birthdate || 'Birth date not available.');
+    }
+
+    if (favEmojiElement) {
+        favEmojiElement.textContent = "Favorite Emoji: " + (randomPerson.fav_emoji || 'No favorite emoji available.');
+    }
+}
+
+randomName();
 
 
 
