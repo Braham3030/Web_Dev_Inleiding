@@ -5,14 +5,25 @@ let url = "https://fdnd.directus.app/items/person"
 
 
 async function fetchData() {
+
+    const savedData = sessionStorage.getItem('personData');
+
+    if (savedData) {
+        console.log('Data loaded from localStorage');
+        return JSON.parse(savedData);
+    }
     try {
+        console.log('Fetching data from API...');
         const response = await fetch(url);
 
         if (!response.ok) throw new Error(`API request failed: ${response.status}`);
 
-        const data = await response.json();
+        const result = await response.json();
+        const person = result.data;
 
-        return data.data;
+        sessionStorage.setItem('personData', JSON.stringify(person));
+
+        return person;
     } catch (error) {
         console.error('Error fetching data:', error);
         return [];
