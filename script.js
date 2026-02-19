@@ -65,6 +65,7 @@ async function randomName() {
     const bioElement = document.querySelector('.bio');
     const birthDateElement = document.querySelector('.birthDate');
     const favEmojiElement = document.querySelector('.favEmoji');
+    const favColorElement = document.querySelector('.favColor');
 
     if (nameElement) {
         nameElement.textContent = randomPerson.name
@@ -85,6 +86,17 @@ async function randomName() {
 
     if (favEmojiElement) {
         favEmojiElement.textContent = "Favorite Emoji: " + (randomPerson.fav_emoji || 'No favorite emoji available.');
+    }
+
+    if (favColorElement) {
+        const favouriteColorElement = randomPerson.fav_color;
+        favColorElement.textContent = "Favorite Color: " + (randomPerson.fav_color || 'No favorite color available.');
+
+        favColorElement.style.backgroundColor = favouriteColorElement;
+
+        favColorElement.style.textShadow = `0 0 100px ${favouriteColorElement}`;
+    } else {
+        favColorElement.style.backgroundColor = 'transparent'
     }
 }
 

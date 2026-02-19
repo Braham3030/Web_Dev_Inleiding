@@ -205,6 +205,15 @@ article {
     animation-delay: 0.4s;
 }
 
+.favColor {
+    margin-left: -1em;
+    padding: 1em;
+    border-radius: 16px;
+    font-size: 18px;
+    color: light-dark(black, white);
+    animation: slideIn 1s ease-out forwards;
+}
+
 @keyframes slideIn {
     0% {
         transform: translateX(-100%);
