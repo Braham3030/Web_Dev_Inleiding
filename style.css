@@ -73,6 +73,21 @@ h1 {
     brightness(calc(var(--cutoff) / 100))
     contrast(9000)
   ;
+  transform: translateY(-100%);
+  opacity: 0;
+  animation: slideInTop 1s ease-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes slideInTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 header.compact h1 {
@@ -147,19 +162,50 @@ transform: scale(1.1);
     }
 }
 
+.articleStyle {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    margin-top: 40em;
+    padding: 0;
+}
 
 
+.myProfile {
 
-article {
-    margin-top: 20em;
-    margin-left: 2em;
-    border: 4px solid green;
-    width: 50em;
+    /* margin-top: 40em;
+    margin-left: 2em; */
+    width: 40em;
     height: auto;
+    min-height: 20em;
     padding-left: 1em;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+
+       /* From https://css.glass */
+    background: light-dark(rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.35));
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.09));
+}
+
+.randomProfile {
+    /* margin-top: 5em;
+    margin-left: 2em; */
+    width: 40em;
+    height: auto;
+    min-height: 20em;
+    padding-left: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     overflow: hidden;
 
@@ -175,12 +221,12 @@ article {
     border: 1px solid light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.09));
 }
 
-.name {
+.name, .nameB {
     font-size: 32px;
     margin-bottom: 0;
     color: light-dark(black, white);
     animation: slideIn 1s ease-out forwards;
-}vg
+}
 
 .nickname {
     font-size: 24px;
@@ -190,7 +236,7 @@ article {
     animation-delay: 0.1s;
 }
 
-.bio {
+.bio, .bioB {
     font-size: 18px;
     width: 90%;
     color: light-dark(black, white);
@@ -198,19 +244,20 @@ article {
     animation-delay: 0.3s;
 }
 
-.birthDate {
+.birthDate, .birtDateB {
     font-size: 18px;
     color: light-dark(black, white);
     animation: slideIn 1s ease-out forwards;
     animation-delay: 0.4s;
 }
 
-.favColor {
+.favColor, .favColorB {
     margin-left: -1em;
     padding: 1em;
     border-radius: 16px;
     font-size: 18px;
     color: light-dark(black, white);
+    text-shadow: 0px 0px 20px light-dark(white, black);
     animation: slideIn 1s ease-out forwards;
 }
 
@@ -326,35 +373,35 @@ article {
     height: 50px;
     border-radius: 50%;
     /* background: radial-gradient(circle, rgba(355, 355, 355, 0.5) 0%, rgba(0, 0, 0, 0.05) 70%, transparent 70%); */
-    background: white;
+    background: light-dark(black, white);
     /* filter: blur(40px); */
     transform: translate(-50%, -50%);
     /* mix-blend-mode: screen; */
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
-    box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.7);
+    box-shadow: light-dark(0px 0px 40px rgba(0, 0, 0, 0.7), 0px 0px 40px rgba(255, 255, 255, 0.7));
     animation: shadow-pulse 5s infinite;
     transition: transform 0.8s ease-in-out;
 }
 
 @keyframes shadow-pulse {
     0% {
-        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        box-shadow: light-dark(0px 0px 40px rgba(0, 0, 0, 0.7), 0px 0px 10px rgba(255, 255, 255, 0.5));
         transition: rotate(0deg);
 
         width: 50px;
         height: 50px;
     }
     50% {
-        box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.7);
+        box-shadow: light-dark(0px 0px 40px rgba(0, 0, 0, 0.7), 0px 0px 40px rgba(255, 255, 255, 0.7));
         transition: rotate(360deg);
 
         width: 40px;
         height: 40px;
     }
     100% {
-        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        box-shadow: light-dark(0px 0px 40px rgba(0, 0, 0, 0.7), 0px 0px 10px rgba(255, 255, 255, 0.5));
         transition: rotate(0deg);
 
         width: 50px;
