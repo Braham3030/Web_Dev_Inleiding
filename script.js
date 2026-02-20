@@ -126,6 +126,23 @@ randomName();
     });
 
 
+    // article onClick event effect
+
+    const article = document.querySelector('article');
+
+    if (article) {
+        article.addEventListener('click', () => {
+            article.classList.toggle('clicked');
+        });
+    }
+
+    const randomProfile = document.querySelector('.randomProfile');
+
+    if (randomProfile) {
+        randomProfile.addEventListener('click', () => {
+            randomProfile.classList.toggle('clicked');
+        });
+    }
 
 
 

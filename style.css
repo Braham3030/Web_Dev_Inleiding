@@ -162,13 +162,21 @@ transform: scale(1.1);
     }
 }
 
+article.clicked {
+    width: 90%;
+    min-height: 50em;
+    position: absolute;
+    top: 30%;
+    z-index: 1000;
+}
+
 .articleStyle {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
 
-    margin-top: 40em;
+    margin-top: 20em;
     padding: 0;
 }
 
@@ -219,6 +227,14 @@ transform: scale(1.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.09));
+}
+
+.randomProfile.clicked {
+    width: 90%;
+    min-height: 50em;
+    position: absolute;
+    top: 30%;
+    z-index: 1000;
 }
 
 .name, .nameB {
