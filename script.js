@@ -126,11 +126,19 @@ randomName();
     });
 
 
+
+
     // article onClick event effect
 
     const article = document.querySelector('article');
 
     if (article) {
+        article.addEventListener('mouseenter', () => {
+            glow.classList.add('hovered');
+        });
+        article.addEventListener('mouseleave', () => {
+            glow.classList.remove('hovered');
+        });
         article.addEventListener('click', () => {
             article.classList.toggle('clicked');
         });
@@ -139,6 +147,12 @@ randomName();
     const randomProfile = document.querySelector('.randomProfile');
 
     if (randomProfile) {
+        randomProfile.addEventListener('mouseenter', () => {
+            glow.classList.add('hovered');
+        });
+        randomProfile.addEventListener('mouseleave', () => {
+            glow.classList.remove('hovered');
+        });
         randomProfile.addEventListener('click', () => {
             randomProfile.classList.toggle('clicked');
         });

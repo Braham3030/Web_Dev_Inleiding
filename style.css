@@ -425,3 +425,23 @@ article.clicked {
     }
 }
 
+.mouse-glow.hovered {
+    z-index: 1000;
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
+    animation: shadow-pulse-hover 1s infinite;
+}
+
+@keyframes shadow-pulse-hover {
+    0% {
+        box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
+    }
+    50% {
+        box-shadow: 2px 2px 60px rgba(0, 0, 0, 0.7);
+    }
+    100% {
+        box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
+    }
+}
