@@ -183,6 +183,17 @@ randomName();
         });
     }
 
+    const headerElement = document.querySelector('header');
+
+    if (headerElement) {
+        headerElement.addEventListener('mouseenter', () => {
+            glow.classList.add('hovered');
+        });
+        headerElement.addEventListener('mouseleave', () => {
+            glow.classList.remove('hovered');
+        });
+    }
+
 
 
 
