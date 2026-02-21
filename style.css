@@ -102,32 +102,20 @@ header.compact {
     transform-origin: 4px 0px;
 }
 
-#darkModeBtn {
-    /* text-decoration: none;
+/* #darkModeBtn {
+    text-decoration: none;
     padding: 20px;
     border-radius: 16px;
     margin-left: 16px;
     width: 80%;
-    color: white;
 
-    border-radius: 16px; */
-
-
-        /* From https://css.glass */
-    /* background: light-dark(rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.22));
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid light-dark(rgba(0, 0, 0, 0.23), rgba(255, 255, 255, 0.23));
 
-
-    box-shadow: 0 5px 90px light-dark(white, black);
-
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease; */
-}
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
+} */
 
 .menu li:first-of-type label {
+    margin-left: 16px;
     width: 150px;
     height: 50px;
     position: relative;
@@ -148,21 +136,31 @@ header.compact {
     background: linear-gradient(180deg, #ffcc89, #d8860b);
     border-radius: 50%;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+
+    transition: left 0.6s ease, transform 0.6s ease;
 }
 
+
 .menu li:first-of-type input {
+    position: absolute;
     width: 0;
     height: 0;
     opacity: 0;
 }
 
-.menu li:first-of-type input:checked + .menu li:first-of-type label {
+.menu li:first-of-type input:checked + label {
     background: #242424;
 }
 
-.menu li:first-of-type input:checked + .menu li:first-of-type label:after {
-    left: 500px;
+.menu li:first-of-type input:checked + label:after {
+    left: 145px;
     transform: translateX(-100%);
+
+    background: linear-gradient(180deg, #89d4ff, #0b2ad8);
+}
+
+.menu li:first-of-type input:active + label:after {
+    width: 70px;
 }
 
 .menu {
