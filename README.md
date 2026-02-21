@@ -12,3 +12,5 @@
 ## sources
 
 * [sessions](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
+
+* [Light-Dark_Mode](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_dark_mode)
