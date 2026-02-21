@@ -9,12 +9,27 @@
 </head>
 <body>
     <header class:compact={compact}>
-        <h1>Introduction Page</h1>
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-        </ul>
+        <div class="visibleMenu">
+            <h1>Introduction Page</h1>
+            <input type="search">
+            <label for="search">Search the page</label>
+        </div>
+        <nav>
+            <div class="hamburgerMenu">
+                <input type="checkbox" id="menuToggle">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <ul class="menu">
+                    <h2>Accesibility items</h2>
+                    <li>
+                        <button onclick="toggleDarkMode()" class="darkModeBtn"><label for="menuToggle">Dark Mode</label></button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main>

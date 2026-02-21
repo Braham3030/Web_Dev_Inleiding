@@ -125,6 +125,12 @@ randomName();
         lastY = scrollY;
     });
 
+    // Dark mode toggle
+    
+    function toggleDarkMode() {
+        let element = document.body;
+        element.classList.toggle("dark-mode");
+    }
 
 
 
@@ -155,6 +161,17 @@ randomName();
         });
         randomProfile.addEventListener('click', () => {
             randomProfile.classList.toggle('clicked');
+        });
+    }
+
+    const hamburgerMenus = document.querySelector('.hamburgerMenu');
+
+    if (hamburgerMenus) {
+        hamburgerMenus.addEventListener('mouseenter', () => {
+            glow.classList.add('hovered');
+        });
+        hamburgerMenus.addEventListener('mouseleave', () => {
+            glow.classList.remove('hovered');
         });
     }
 
