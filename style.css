@@ -19,12 +19,6 @@ body {
     cursor: none;
 }
 
-.dark-mode article {
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-}
-
 header {
     position: fixed;
     /* display: flex;
@@ -138,7 +132,7 @@ header.compact {
 } */
 
 .menu li:first-of-type label, .menu li:nth-of-type(2) label {
-    margin-left: 16px;
+    margin: 1em 0 1em 16px;
     width: 150px;
     height: 50px;
     position: relative;
@@ -236,6 +230,7 @@ header.compact {
 }
 
 .menu h2 {
+    font-size: 24px;
     margin-left: 16px;
 }
 
@@ -561,15 +556,68 @@ article.clicked {
 .dark-mode {
     background-color: rgba(0, 0, 0, 0.8);
     color: rgba(255, 255, 255, 0.8);
+    
+    .hamburgerMenu span {
+        background: rgba(255, 255, 255, 0.9);
+        animation: hamburgerGlow 2s infinite;
+    }
+
+    article {
+        background: rgba(255, 255, 255, 0.55);
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    h1 {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 5px 2px 300px rgba(255, 255, 255, 0.8);
+    }
+
+    h2 {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .nickname {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB {
+        color: rgba(255, 255, 255, 0.8);
+    }
 }
+
+
+@keyframes hamburgerGlow {
+    0% {
+        box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0px 5px 40px rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.4);
+    }
+}
+
 
 .large-font {
     h1 {
         font-size: 52px;
         font-weight: 900;
     }
-    .name, .nameB {
+    h2 {
         font-size: 40px;
+    }
+    .hamaburgerMenuTitle {
+        font-size: 40px;
+        width: 50%;
+        text-wrap: wrap;
+    }
+    .nickname {
+        font-size: 32px;
+    }
+    .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB {
+        font-size: 24px;
     }
 }
 
