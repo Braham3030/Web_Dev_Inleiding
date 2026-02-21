@@ -132,6 +132,14 @@ randomName();
         element.classList.toggle("dark-mode");
     }
 
+    function toggleFontSize() {
+        let element = document.body;
+        element.classList.toggle("large-font");
+    }
+
+
+
+
 
 
     // article onClick event effect
