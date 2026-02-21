@@ -21,10 +21,10 @@ body {
 
 header {
     position: fixed;
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
 
 
     top: 0;
@@ -51,9 +51,77 @@ header.compact {
 
 .visibleMenu {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 1em;
     align-items: center;
     justify-content: center;
+}
+
+.visibleMenu input {
+    width: 3em;
+    height: 3em;
+    border-radius: 160px;
+    outline: none;
+    border: none;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 -5px 20px rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    animation: shrinkInput 0.6s ease-out forwards;
+}
+
+.visibleMenu input:focus {
+    width: 20em;
+    border-radius: 16px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 -5px 20px rgba(255, 255, 255, 0.4);
+        animation: expandInput 0.6s ease-out forwards;
+}
+
+@keyframes expandInput {
+    0% {
+        width: 3em;
+        border-radius: 160px;
+    }
+    100% {
+        width: 20em;
+        border-radius: 16px;
+    }
+}
+@keyframes shrinkInput {
+    0% {
+        width: 20em;
+        border-radius: 16px;
+    }
+    100% {
+        width: 3em;
+        border-radius: 160px;
+    }
+}
+
+.visibleMenu label {
+    margin-left: 15px;
+    pointer-events: none;
+    position: relative;
+    right: 150px;
+    transform: translateX(-40%);
+    width: fit-content;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.visibleMenu input:focus + label, .visibleMenu input:not(:placeholder-shown) + label {
+    transform: translateY(0);
+    opacity: 1;
+    font-size: 18px;
+
+    position: relative;
+    right: 240px;
+    transform: translateX(-40%);
+    width: fit-content;
+    transition: transform 0.3s ease;
+}
+
+.visibleMenu input:not(:placeholder-shown) + label {
+    transform: translateX(-50%);
+    opacity: 0;
 }
 
 .hamburgerMenu {
@@ -279,45 +347,6 @@ header.compact h1 {
     margin-left: 2em;
     margin-right: 2em;
 }
-
-/* ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 1em;
-    width: 30%;
-    font-size: 24px;
-}
-
-header.compact ul {
-    font-size: 16px;
-    width: 20%;
-}
-li {
-    border-radius: 16px;
-    padding: 0.5em 1em;
-
-
-
-        /* From https://css.glass */
-    /* background: light-dark(rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.22));
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid light-dark(rgba(0, 0, 0, 0.23), rgba(255, 255, 255, 0.23));
-
-
-    box-shadow: 0 5px 90px light-dark(white, black);
-
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
-
-    
-} */
-
 
 #darkModeBtn:hover {
 
