@@ -76,11 +76,11 @@ header.compact {
 
 #menuToggle {
     display: block;
-    width: 2.5em;
-    height: 2.5em;
+    width: 4em;
+    height: 4em;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0em;
+    right: 40%;
     cursor: pointer;
     opacity: 0;
     z-index: 1001;
@@ -89,12 +89,40 @@ header.compact {
 
 .hamburgerMenu span {
     display: block;
-    width: 2em;
-    height: 4px;
-    background: red;
+    width: 3em;
+    height: 8px;
+    border-radius: 16px;
+    background: black;
     margin-bottom: 5px;
     position: relative;
-    transform-origin: 4px 0px;
+    right: 50%;
+    top: 0em;
+    transform-origin: center;
+
+    transition: transform 0.8s ease, width 0.6s ease, opacity 0.8s ease, top 0.8s ease;
+}
+
+.hamburgerMenu input:checked ~ span:nth-of-type(1) {
+    transform: translateY(13px) rotate(45deg);
+
+}
+
+.hamburgerMenu input:checked ~ span:nth-of-type(2) {
+    width: 0;
+    opacity: 0;
+}
+
+.hamburgerMenu input:checked ~ span:nth-of-type(3) {
+    transform: translateY(-13px) rotate(-45deg);
+
+}
+
+.hamburgerMenu input:checked ~ span {
+    top: 13em;
+}
+
+#menuToggle:checked {
+    top: 15em;
 }
 
 /* #darkModeBtn {
@@ -197,8 +225,8 @@ header.compact {
     top: 10em;
     height: 100vh;
     border-radius: 16px;
-    /* opacity: 0; */
-    /* transform: translate(100%, 0); */
+    opacity: 0;
+    transform: translate(100%, 0);
     list-style: none;
 
     background: rgba(0, 0, 0, 0.4);
