@@ -16,3 +16,5 @@
 * [Light-Dark_Mode](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_dark_mode)
 
 * [Light-dark mode switch](https://www.youtube.com/watch?v=S-T9XoCMwt4&t=233s)
+
+* [Dyslectic font styling](https://accessiblyapp.com/blog/best-fonts-for-dyslexia/)
