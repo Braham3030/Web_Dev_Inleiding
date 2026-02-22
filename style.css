@@ -85,6 +85,7 @@ header.compact .visibleMenu {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 28px;
+    cursor: none;
 }
 
 .visibleMenu input:focus {
@@ -167,12 +168,16 @@ header.compact .visibleMenu {
     width: 4em;
     height: 4em;
     position: absolute;
-    top: 0em;
+    top: 2.3em;
     right: 40%;
     cursor: pointer;
     opacity: 0;
     z-index: 1001;
 
+}
+
+header.compact #menuToggle {
+    top: 0em;
 }
 
 .hamburgerMenu span {
@@ -184,10 +189,15 @@ header.compact .visibleMenu {
     margin-bottom: 5px;
     position: relative;
     right: 50%;
-    top: 0em;
+    top: 2.5em;
     transform-origin: center;
+    cursor: none;
 
-    transition: transform 0.8s ease, width 0.4s ease, opacity 0.8s ease, top 0.8s ease;
+    transition: transform 0.8s ease, width 0.4s ease, opacity 0.8s ease, top 0.6s ease;
+}
+
+header.compact .hamburgerMenu span {
+    top: .3em;
 }
 
 .hamburgerMenu input:checked ~ span:nth-of-type(1) {
@@ -209,8 +219,16 @@ header.compact .visibleMenu {
     top: 13em;
 }
 
+header.compact .hamburgerMenu input:checked ~ span {
+    top: 7em;
+}
+
 #menuToggle:checked {
     top: 15em;
+}
+
+header.compact #menuToggle:checked {
+    top: 8em;
 }
 
 /* #darkModeBtn {
@@ -234,7 +252,7 @@ header.compact .visibleMenu {
     border-radius: 200px;
     background: #ebebeb;
     box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.4), inset 0 -5px 20px rgba(255, 255, 255, 0.4);
-    cursor: pointer;
+    cursor: none;
 }
 
 .menu li:first-of-type label:after {
@@ -271,7 +289,7 @@ header.compact .visibleMenu {
 
 .menu li:nth-of-type(3) label:after {
     content: "Dyslexia";
-    width: 130px;
+    width: 120px;
     height: 30px;
     position: absolute;
     display: flex;
@@ -279,30 +297,31 @@ header.compact .visibleMenu {
     justify-content: center;
     font-size: 16px;
     top: 10px;
-    left: 10px;
+    left: 15px;
     background: linear-gradient(180deg, #e1dddc, #7c7b79);
     border-radius: 24px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 
-    transition: width 0.6s ease, height 0.6s ease transform 0.6s ease;
+    transition: width 0.6s cubic-bezier(0.3, 0.2, 0.2, 1.4), height 0.6s cubic-bezier(0.3, 0.2, 0.2, 1.4) transform 0.6s cubic-bezier(0.3, 0.2, 0.2, 1.4);
 }
 
 .menu li:nth-of-type(4) label:after {
     content: "High Contrast";
-    width: 130px;
+    width: 120px;
     height: 30px;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
+    font-weight: 400;
     top: 10px;
-    left: 10px;
+    left: 15px;
     background: linear-gradient(180deg, #e1dddc, #7c7b79);
     border-radius: 24px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 
-    transition: width 0.6s ease, height 0.6s ease transform 0.6s ease;
+    transition: width 0.6s ease, height 0.6s ease transform 0.6s ease, font-size 0.6s ease, font-weight 0.4s ease;
 }
 
 
@@ -338,30 +357,90 @@ header.compact .visibleMenu {
 .menu li:nth-of-type(3) input:checked + label:after {
     content: "Dyslexia";
     font-size: 28px;
-    color: red;
     left: 0px;
     top: 0px;
     width: 150px;
     height: 50px;
     transform: translateX(0);
 
-    background: linear-gradient(90deg, #7c7b79, #e1dddc);
+    background: black;
+    color: white;
 }
+
+.menu li:nth-of-type(3) input:not(:checked):hover + label:after {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    width: 130px;
+    left: 10px;
+     background-image: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(200, 245, 255, 0.4) 50%,
+    rgba(200, 200, 245, 0.4) 55%,
+    transparent 70%
+);
+
+background-size: 300% 100%;
+background-position: 0% 0%;
+animation: shine 3s linear infinite;
+
+transform: scale(1.1);
+    animation: dyslexiaBackground 3s linear infinite;
+}
+
+@keyframes dyslexiaBackground {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: -100% 0%;
+    }
+}
+
+
 
 .menu li:nth-of-type(4) input:checked + label:after {
     content: "High Contrast";
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
     left: 0px;
     top: 0px;
     width: 150px;
     height: 50px;
+    border: 2px solid white;
     transform: translateX(0);
 
-    background: linear-gradient(90deg, #7c7b79, #e1dddc);
+    background: linear-gradient(90deg,#000000);
+}
+
+.menu li:nth-of-type(4) input:not(:checked):hover + label:after {
+    width: 130px;
+    left: 10px;
+    color: red;
+    background: black;
+    font-size: 18px;
 }
 
 .menu li:first-of-type input:active + label:after, .menu li:nth-of-type(2) input:active + label:after {
     width: 70px;
+    box-shadow: 0px 0px 200px rgba(0, 0, 0, 0.8);
+}
+
+.menu li:first-of-type input:active + label, .menu li:nth-of-type(2) input:active + label, .menu li:nth-of-type(3) input:active + label, .menu li:nth-of-type(4) input:active + label {
+    box-shadow: 0px 0px 200px rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+.menu li:first-of-type input:hover + label:after, .menu li:nth-of-type(2) input:hover + label:after {
+    width: 70px;
+}
+
+.menu li:first-of-type input:hover + label, .menu li:nth-of-type(2) input:hover + label, .menu li:nth-of-type(3) input:hover + label, .menu li:nth-of-type(4) input:hover + label {
+    box-shadow: 0px 0px 200px rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
 }
 
 .menu {
@@ -390,6 +469,7 @@ header.compact .visibleMenu {
 .menu h2 {
     font-size: 24px;
     margin-left: 16px;
+    margin-top: 1.5em;
 }
 
 .hamburgerMenu input:checked ~ span:nth-child(1) {
@@ -402,7 +482,17 @@ header.compact .visibleMenu {
     top: 10em;
     opacity: 1;
     transform: scale(1);
+    transition: transform 0.4s ease-in-out, top 0.35s ease-in-out;
     /* transform: translate(0, 0); */
+}
+
+.hamburgerMenu input:checked ~ .menu:hover {
+    transform: scale(1.01);
+    filter: drop-shadow(0px 0px 10px rgba(154, 154, 154, 0.6));
+}
+
+header.compact .hamburgerMenu input:checked ~ .menu {
+    top: 4em;
 }
 
 h1 {
@@ -427,6 +517,7 @@ h1 {
 h1 a {
     text-decoration: none;
     color: inherit;
+    cursor: none;
 }
 
 @keyframes slideInTop {
@@ -630,7 +721,7 @@ article.clicked {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: fadeOut 5s ease-out forwards;
+    animation: fadeOut 1.5s ease-out forwards;
 }
 
 @keyframes fadeOut {
@@ -811,6 +902,28 @@ article.clicked {
     font-family: 'OpenDyslexic', Arial;
 }
 
+.high-contrast {
+    header {
+        background-color: black;
+        color: white;
+    }
+    .myProfile, .randomProfile {
+        background-color: black;
+        border: 2px solid white;
+    }
+    h1, h2, .nickname, .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB {
+        color: red;
+        box-shadow: none;
+    }
+    .menu {
+        background: black;
+        border: 2px solid white;
+    }
+    .hamburgerMenu span {
+        background: white;
+        z-index: 1000;
+    }
+}
 
 
 
@@ -864,8 +977,8 @@ article.clicked {
 
 .mouse-glow.hovered {
     z-index: 1000;
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     background-color: transparent;
     box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
     animation: shadow-pulse-hover 1s infinite;
