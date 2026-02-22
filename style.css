@@ -22,7 +22,7 @@ body {
 header {
     position: fixed;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 
@@ -40,13 +40,27 @@ backdrop-filter: blur(25px);
 -webkit-backdrop-filter: blur(25px);
 border: 1px solid light-dark(rgba(0, 0, 0, 0.23), rgba(255, 255, 255, 0.23));
 
+transition: justify-content 0.6s ease, height 0.6s ease;
+
+}
+
+header .visibleMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s ease;
 }
 
 header.compact {
     height: 5em;
-    flex-direction: row;
+    /* flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-start; */
+}
+
+header.compact .visibleMenu {
+    transform: translateX(-40em);
 }
 
 .visibleMenu {
@@ -108,23 +122,27 @@ header.compact {
     margin-left: 15px;
     pointer-events: none;
     position: relative;
-    right: 150px;
-    transform: translateX(-40%);
+    right: 20px;
+    transform: translateX(-40px);
     width: fit-content;
-    font-size: 16px;
+    font-size: 12px;
     opacity: 0;
+    z-index: -1;
+    transition: font-size 0.2s ease, opacity 0.3s ease, transform 0.8s ease;
 }
 
 .visibleMenu input:focus + label, .visibleMenu input:not(:placeholder-shown) + label {
     transform: translateY(0);
     opacity: 1;
     font-size: 18px;
+    color: rgba(0, 0, 0, 0.4);
 
     position: relative;
-    right: 240px;
-    transform: translateX(-40%);
+    right: 140px;
+    transform: translateX(-140px);
     width: fit-content;
-    transition: transform 0.3s ease;
+    z-index: 1;
+    transition: transform 0.6s ease;
 }
 
 .visibleMenu input:not(:placeholder-shown) + label {
@@ -169,7 +187,7 @@ header.compact {
     top: 0em;
     transform-origin: center;
 
-    transition: transform 0.8s ease, width 0.6s ease, opacity 0.8s ease, top 0.8s ease;
+    transition: transform 0.8s ease, width 0.4s ease, opacity 0.8s ease, top 0.8s ease;
 }
 
 .hamburgerMenu input:checked ~ span:nth-of-type(1) {
@@ -207,7 +225,7 @@ header.compact {
     transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
 } */
 
-.menu li:first-of-type label, .menu li:nth-of-type(2) label {
+.menu li:first-of-type label, .menu li:nth-of-type(2) label, .menu li:nth-of-type(3) label {
     margin: 1em 0 1em 16px;
     width: 150px;
     height: 50px;
@@ -251,6 +269,24 @@ header.compact {
     transition: left 0.6s ease, transform 0.6s ease;
 }
 
+.menu li:nth-of-type(3) label:after {
+    content: "Dyslexia";
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(180deg, #e1dddc, #7c7b79);
+    border-radius: 24px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+
+    transition: width 0.6s ease, height 0.6s ease transform 0.6s ease;
+}
+
 
 .menu li input {
     position: absolute;
@@ -260,6 +296,10 @@ header.compact {
 }
 
 .menu li:first-of-type input:checked + label {
+    background: #242424;
+}
+
+.menu li:nth-of-type(3) input:checked + label {
     background: #242424;
 }
 
@@ -281,7 +321,19 @@ header.compact {
     background: linear-gradient(180deg, #7c7b79, #e1dddc);
 }
 
-.menu li:first-of-type input:active + label:after {
+.menu li:nth-of-type(3) input:checked + label:after {
+    content: "Dyslexia";
+    font-size: 28px;
+    left: 0px;
+    top: 0px;
+    width: 150px;
+    height: 50px;
+    transform: translateX(0);
+
+    background: linear-gradient(90deg, #7c7b79, #e1dddc);
+}
+
+.menu li:first-of-type input:active + label:after, .menu li:nth-of-type(2) input:active + label:after {
     width: 70px;
 }
 
@@ -291,18 +343,21 @@ header.compact {
     flex-direction: column;
     justify-content: flex-start;
     padding: 0;
-    width: 20em;
-    top: 10em;
-    height: 100vh;
+    width: 10em;
+    transform: scale(0.05);
+    top: 1em;
+    height: 10vh;
     border-radius: 16px;
     opacity: 0;
-    transform: translate(100%, 0);
+    /* transform: translate(100%, 0); */
     list-style: none;
 
     background: rgba(0, 0, 0, 0.4);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    
+    transition: height 0.8s ease-in-out, width 0.8s ease-in-out, opacity 0.4s ease-in-out, top 0.4s ease-in-out, transform 1s ease-in-out;
 }
 
 .menu h2 {
@@ -315,9 +370,12 @@ header.compact {
 }
 
 .hamburgerMenu input:checked ~ .menu {
+    height: 50vh;
+    width: 20em;
     top: 10em;
     opacity: 1;
-    transform: translate(0, 0);
+    transform: scale(1);
+    /* transform: translate(0, 0); */
 }
 
 h1 {
@@ -337,6 +395,11 @@ h1 {
   opacity: 0;
   animation: slideInTop 1s ease-out forwards;
   animation-delay: 1s;
+}
+
+h1 a {
+    text-decoration: none;
+    color: inherit;
 }
 
 @keyframes slideInTop {
@@ -599,6 +662,14 @@ article.clicked {
         animation: hamburgerGlow 2s infinite;
     }
 
+    label {
+        color: black;
+    }
+
+    .visibleMenu input {
+        box-shadow: 0 5px 10px rgba(255, 255, 255, 0.4), inset 0 -5px 20px rgba(255, 255, 255, 0.4);
+    }
+
     article {
         background: rgba(255, 255, 255, 0.55);
         box-shadow: 0 4px 30px rgba(255, 255, 255, 0.5);
@@ -606,7 +677,7 @@ article.clicked {
     }
 
     h1 {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 1);
         text-shadow: 5px 2px 300px rgba(255, 255, 255, 0.8);
     }
 
@@ -620,6 +691,52 @@ article.clicked {
 
     .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB {
         color: rgba(255, 255, 255, 0.8);
+    }
+
+
+
+    .mouse-glow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        /* background: radial-gradient(circle, rgba(355, 355, 355, 0.5) 0%, rgba(0, 0, 0, 0.05) 70%, transparent 70%); */
+        background:white;
+        /* filter: blur(40px); */
+        transform: translate(-50%, -50%);
+        /* mix-blend-mode: screen; */
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+        box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.7);
+        animation: shadow-pulse 5s infinite;
+        transition: transform 0.8s ease-in-out;
+    }
+
+    @keyframes shadow-pulse {
+        0% {
+            box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.7);
+            transition: rotate(0deg);
+
+            width: 50px;
+            height: 50px;
+        }
+        50% {
+            box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.7);
+            transition: rotate(360deg);
+
+            width: 40px;
+            height: 40px;
+        }
+        100% {
+            box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.7);
+            transition: rotate(0deg);
+
+            width: 50px;
+            height: 50px;
+        }
     }
 }
 
@@ -635,6 +752,9 @@ article.clicked {
         box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.4);
     }
 }
+
+
+
 
 
 .large-font {
@@ -660,6 +780,9 @@ article.clicked {
 
 
 
+.dyslexia {
+    font-family: 'OpenDyslexic', Arial;
+}
 
 
 

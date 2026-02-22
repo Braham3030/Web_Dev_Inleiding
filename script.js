@@ -132,9 +132,18 @@ randomName();
         element.classList.toggle("dark-mode");
     }
 
+    // Font size toggle
+
     function toggleFontSize() {
         let element = document.body;
         element.classList.toggle("large-font");
+    }
+
+    // Dyslexia friendly toggle
+
+    function toggleDyslexiaFriendly() {
+        let element = document.body;
+        element.classList.toggle("dyslexia");
     }
 
 

@@ -10,7 +10,7 @@
 <body>
     <header class:compact={compact}>
         <div class="visibleMenu">
-            <h1>Introduction Page</h1>
+            <h1><a href="index.html">Introduction Page</a></h1>
             <input type="search" id="search" placeholder="">
             <label for="search">Search the page</label>
         </div>
@@ -31,6 +31,10 @@
                     <li>
                         <input type="checkbox" onclick="toggleFontSize()" id="fontSizeBtn">
                         <label for="fontSizeBtn"></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" onclick="toggleDyslexiaFriendly()" id="dyslexiaBtn">
+                        <label for="dyslexiaBtn"></label>
                     </li>
                 </ul>
             </div>
