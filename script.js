@@ -146,6 +146,13 @@ randomName();
         element.classList.toggle("dyslexia");
     }
 
+    // High contrast toggle
+
+    function toggleHighContrast() {
+        let element = document.body;
+        element.classList.toggle("high-contrast");
+    }
+
 
 
 
@@ -165,6 +172,9 @@ randomName();
         article.addEventListener('click', () => {
             article.classList.toggle('clicked');
         });
+        article.addEventListener('click', () => {
+            glow.classList.toggle('clicked');
+        });
     }
 
     const randomProfile = document.querySelector('.randomProfile');
@@ -178,6 +188,9 @@ randomName();
         });
         randomProfile.addEventListener('click', () => {
             randomProfile.classList.toggle('clicked');
+        });
+        randomProfile.addEventListener('click', () => {
+            glow.classList.toggle('clicked');
         });
     }
 
