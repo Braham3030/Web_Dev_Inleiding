@@ -66,6 +66,7 @@ async function randomName() {
     const birthDateElement = document.querySelector('.birthDate');
     const favEmojiElement = document.querySelector('.favEmoji');
     const favColorElement = document.querySelector('.favColor');
+    const websiteElement = document.querySelector('.website');
 
     if (nameElement) {
         nameElement.textContent = randomPerson.name
@@ -97,6 +98,10 @@ async function randomName() {
         favColorElement.style.textShadow = `0 0 100px ${favouriteColorElement}`;
     } else {
         favColorElement.style.backgroundColor = 'transparent'
+    }
+
+    if (websiteElement) {
+        websiteElement.textContent = "Website: " + (randomPerson.website || 'No website available.');
     }
 }
 
