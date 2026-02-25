@@ -17,6 +17,11 @@ body {
     height: 100vh;
     overflow-x: hidden;
     cursor: none;
+
+    background-image: url(img/551548.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 header {
@@ -34,11 +39,11 @@ header {
     z-index: 50;
 
     /* From https://css.glass */
-background: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+background: light-dark(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(25px);
 -webkit-backdrop-filter: blur(25px);
-border: 1px solid light-dark(rgba(0, 0, 0, 0.23), rgba(255, 255, 255, 0.23));
+border: 1px solid light-dark(rgba(255, 255, 255, 0.23), rgba(0, 0, 0, 0.23));
 
 transition: justify-content 0.6s ease, height 0.6s ease;
 
@@ -231,18 +236,6 @@ header.compact #menuToggle:checked {
     top: 8em;
 }
 
-/* #darkModeBtn {
-    text-decoration: none;
-    padding: 20px;
-    border-radius: 16px;
-    margin-left: 16px;
-    width: 80%;
-
-    border-radius: 16px;
-
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
-} */
-
 .menu li:first-of-type label, .menu li:nth-of-type(2) label, .menu li:nth-of-type(3) label, .menu li:nth-of-type(4) label {
     margin: 1em 0 1em 16px;
     width: 150px;
@@ -332,8 +325,12 @@ header.compact #menuToggle:checked {
     opacity: 0;
 }
 
-.menu li:first-of-type input:checked + label, .menu li:nth-of-type(3) input:checked + label, .menu li:nth-of-type(4) input:checked + label {
+.menu li:first-of-type input:checked + label {
     background: #242424;
+}
+
+.menu li:nth-of-type(2) input:checked + label {
+    background: linear-gradient(90deg, #7c7b79, #e1dddc);
 }
 
 .menu li:first-of-type input:checked + label:after {
@@ -348,6 +345,7 @@ header.compact #menuToggle:checked {
 .menu li:nth-of-type(2) input:checked + label:after {
     content: "Aa";
     font-size: 28px;
+    font-weight: 900;
     left: 145px;
     transform: translateX(-100%);
 
@@ -551,33 +549,6 @@ header.compact h1 {
     margin-right: 2em;
 }
 
-#darkModeBtn:hover {
-
-    background-image: linear-gradient(
-    115deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.3) 45%,
-    rgba(200, 245, 255, 0.4) 50%,
-    rgba(200, 200, 245, 0.4) 55%,
-    transparent 70%
-);
-
-background-size: 300% 100%;
-background-position: 0% 0%;
-animation: shine 3s linear infinite;
-
-transform: scale(1.1);
-}
-
-@keyframes shine {
-    0% {
-        background-position: 100% 0%;
-    }
-    100% {
-        background-position: -100% 0%;
-    }
-} */
-
 article.clicked {
     width: 90%;
     min-height: 50em;
@@ -612,12 +583,50 @@ article.clicked {
     overflow: hidden;
 
        /* From https://css.glass */
-    background: light-dark(rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.35));
+    background: light-dark(rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.35));
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.09));
+    border: 1px solid light-dark(rgba(255, 255, 255, 0.09), rgba(0, 0, 0, 0.09));
+}
+
+.moreContent {
+    display: none;
+}
+
+.myProfile.clicked .moreContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.moreContent h3 {
+    font-size: 28px;
+    color: light-dark(black, white);
+}
+
+.moreContent ul {
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    margin-top: 3em;
+    padding: 0;
+    margin: 0;
+}
+
+.moreContent ul li {
+    font-size: 22px;
+    list-style-type: none;
+    padding: 1em;
+    border-radius: 16px;
+
+    background: light-dark(rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.15));
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid light-dark(rgba(255, 255, 255, 0.09), rgba(0, 0, 0, 0.09));
 }
 
 .randomProfile {
@@ -637,15 +646,15 @@ article.clicked {
 
 
         /* From https://css.glass */
-    background: light-dark(rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.35));
+    background: light-dark(rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.35));
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid light-dark(rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.09));
+    border: 1px solid light-dark(rgba(255, 255, 255, 0.09), rgba(0, 0, 0, 0.09));
 }
 
-.randomProfile.clicked {
+article.clicked {
     width: 90%;
     min-height: 50em;
     position: absolute;
@@ -704,21 +713,18 @@ article.clicked {
     }
 }
 
-/* .bio, .birthDate {
-    animation: widthGrow 1s ease-out forwards;
-    animation-delay: 5s;
+.moreContentRandom {
+    display: none;
 }
 
-@keyframes widthGrow {
-    0% {
-        opacity: 0;
-        width: 20%;
-    }
-    100% {
-        opacity: 1;
-        width: 100%;
-    }
-} */
+article.clicked .moreContentRandom {
+    display: flex;
+    font-size: 18px;
+    width: 90%;
+    color: light-dark(black, white);
+    animation: slideIn 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
 
 
 .loaderContainer {
@@ -769,6 +775,7 @@ article.clicked {
   content:"Hello...\AHallo...\Aਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ...\AHola...\A Bonjour...\A Ciao...";
   white-space: pre;
   display:inline-block;
+  color: white;
   animation: l38 1s infinite steps(6);
 }
 
@@ -795,7 +802,7 @@ article.clicked {
     }
 
     label {
-        color: black;
+        color: white;
     }
 
     .visibleMenu input {
@@ -803,9 +810,9 @@ article.clicked {
     }
 
     article {
-        background: rgba(255, 255, 255, 0.55);
-        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(0, 0, 0, 0.55);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.09);
     }
 
     h1 {
@@ -813,7 +820,7 @@ article.clicked {
         text-shadow: 5px 2px 300px rgba(255, 255, 255, 0.8);
     }
 
-    h2 {
+    h2, h3 {
         color: rgba(255, 255, 255, 0.8);
     }
 
@@ -897,15 +904,19 @@ article.clicked {
     h2 {
         font-size: 40px;
     }
+    h3 {
+        font-size: 32px;
+    }
     .hamaburgerMenuTitle {
         font-size: 40px;
-        width: 50%;
+        margin-top: .5em;
+        width: 65%;
         text-wrap: wrap;
     }
     .nickname {
         font-size: 32px;
     }
-    .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB {
+    .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB, .moreContent ul li {
         font-size: 24px;
     }
 }
@@ -925,17 +936,22 @@ article.clicked {
         background-color: black;
         border: 2px solid white;
     }
-    h1, h2, .nickname, .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB {
+    h1, h2, h3, .nickname, .bio, .bioB, .birthDate, .birtDateB, .favColor, .favColorB, .moreContent ul li {
         color: red;
         box-shadow: none;
     }
-    .menu {
+    .menu, .moreContent ul li {
         background: black;
         border: 2px solid white;
     }
     .hamburgerMenu span {
         background: white;
         z-index: 1000;
+    }
+
+    .mouse-glow.hovered {
+        background: white;
+        box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.7);
     }
 }
 
