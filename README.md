@@ -8,6 +8,14 @@
 
 * Today I linked the API with javascript and got the names on the page from the api. I have also used sessionStorage to store the api in the browser. With this the fetfching of data becomes way quicker and is also more stable to use. This also helps as a fallback to always show something. I also made further css enhancements. For instance when loading the color data on the page, the whole 'div' becomes that color.
 
+## Day 3
+
+* Made more advancements with animations and interactions. Added the option to change certain elements on the page based on accesisibility levels. For instance a high contrast mode, dark mode and dyslexia mode. These advancements makes the user interface more accesible.
+
+## Day 4
+
+* Added the background for the webpage. Also made tweaks to design and animations. Almost every aspect of the webpage has a certain animation within.
+
 
 ## sources
 
@@ -18,3 +26,5 @@
 * [Light-dark mode switch](https://www.youtube.com/watch?v=S-T9XoCMwt4&t=233s)
 
 * [Dyslectic font styling](https://accessiblyapp.com/blog/best-fonts-for-dyslexia/)
+
+* [Wallpaper](https://wall.alphacoders.com/big.php?i=551548)
