@@ -132,6 +132,30 @@ randomName();
         element.classList.toggle("dark-mode");
     }
 
+    // Font size toggle
+
+    function toggleFontSize() {
+        let element = document.body;
+        element.classList.toggle("large-font");
+    }
+
+    // Dyslexia friendly toggle
+
+    function toggleDyslexiaFriendly() {
+        let element = document.body;
+        element.classList.toggle("dyslexia");
+    }
+
+    // High contrast toggle
+
+    function toggleHighContrast() {
+        let element = document.body;
+        element.classList.toggle("high-contrast");
+    }
+
+
+
+
 
 
     // article onClick event effect
@@ -148,6 +172,9 @@ randomName();
         article.addEventListener('click', () => {
             article.classList.toggle('clicked');
         });
+        article.addEventListener('click', () => {
+            glow.classList.toggle('clicked');
+        });
     }
 
     const randomProfile = document.querySelector('.randomProfile');
@@ -162,6 +189,9 @@ randomName();
         randomProfile.addEventListener('click', () => {
             randomProfile.classList.toggle('clicked');
         });
+        randomProfile.addEventListener('click', () => {
+            glow.classList.toggle('clicked');
+        });
     }
 
     const hamburgerMenus = document.querySelector('.hamburgerMenu');
@@ -171,6 +201,17 @@ randomName();
             glow.classList.add('hovered');
         });
         hamburgerMenus.addEventListener('mouseleave', () => {
+            glow.classList.remove('hovered');
+        });
+    }
+
+    const headerElement = document.querySelector('header');
+
+    if (headerElement) {
+        headerElement.addEventListener('mouseenter', () => {
+            glow.classList.add('hovered');
+        });
+        headerElement.addEventListener('mouseleave', () => {
             glow.classList.remove('hovered');
         });
     }

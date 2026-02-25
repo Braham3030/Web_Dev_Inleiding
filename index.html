@@ -10,8 +10,8 @@
 <body>
     <header class:compact={compact}>
         <div class="visibleMenu">
-            <h1>Introduction Page</h1>
-            <input type="search">
+            <h1><a href="index.html">Introduction Page</a></h1>
+            <input type="search" id="search" placeholder="">
             <label for="search">Search the page</label>
         </div>
         <nav>
@@ -23,9 +23,22 @@
                 <span></span>
 
                 <ul class="menu">
-                    <h2>Accesibility items</h2>
+                    <h2 class="hamaburgerMenuTitle">Accesibility items</h2>
                     <li>
-                        <button onclick="toggleDarkMode()" class="darkModeBtn"><label for="menuToggle">Dark Mode</label></button>
+                        <input type="checkbox" onclick="toggleDarkMode()" id="darkModeBtn">
+                        <label for="darkModeBtn"></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" onclick="toggleFontSize()" id="fontSizeBtn">
+                        <label for="fontSizeBtn"></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" onclick="toggleDyslexiaFriendly()" id="dyslexiaBtn">
+                        <label for="dyslexiaBtn"></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" onclick="toggleHighContrast()" id="highContrastBtn">
+                        <label for="highContrastBtn"></label>
                     </li>
                 </ul>
             </div>
