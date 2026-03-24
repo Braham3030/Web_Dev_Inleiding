@@ -1,7 +1,7 @@
 
 // API Fetch
 
-let url = "https://fdnd.directus.app/items/person"
+let url = "https://fdnd.directus.app/items/person?filter[squads][squad_id][tribe][name]=CMD%20Minor%20Web%20Dev&filter[squads][squad_id][cohort]=2526"
 
 
 async function fetchData() {
