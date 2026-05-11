@@ -1,248 +1,221 @@
-
 // API Fetch
 
-let url = "https://fdnd.directus.app/items/person?filter[squads][squad_id][tribe][name]=CMD%20Minor%20Web%20Dev&filter[squads][squad_id][cohort]=2526"
-
+let url = "https://fdnd.directus.app/items/person?filter[squads][squad_id][tribe][name]=CMD%20Minor%20Web%20Dev&filter[squads][squad_id][cohort]=2526";
 
 async function fetchData() {
+	const savedData = sessionStorage.getItem("personData");
 
-    const savedData = sessionStorage.getItem('personData');
+	if (savedData) {
+		console.log("Data loaded from localStorage");
+		return JSON.parse(savedData);
+	}
+	try {
+		console.log("Fetching data from API...");
+		const response = await fetch(url);
 
-    if (savedData) {
-        console.log('Data loaded from localStorage');
-        return JSON.parse(savedData);
-    }
-    try {
-        console.log('Fetching data from API...');
-        const response = await fetch(url);
+		if (!response.ok) throw new Error(`API request failed: ${response.status}`);
 
-        if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+		const result = await response.json();
+		const person = result.data;
 
-        const result = await response.json();
-        const person = result.data;
+		sessionStorage.setItem("personData", JSON.stringify(person));
 
-        sessionStorage.setItem('personData', JSON.stringify(person));
-
-        return person;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return [];
-    }
+		return person;
+	} catch (error) {
+		console.error("Error fetching data:", error);
+		return [];
+	}
 }
 console.log(fetchData());
-
 
 // filter name
 
 async function nameFilter() {
-    const person = await fetchData();
+	const person = await fetchData();
 
-    const allPerson = person.map(person => person.name);
-    console.log(allPerson);
+	const allPerson = person.map((person) => person.name);
+	console.log(allPerson);
 
-    const personWithName = person.filter(person => person.name != null && person.name !== '');
-    console.log(personWithName);
+	const personWithName = person.filter((person) => person.name != null && person.name !== "");
+	console.log(personWithName);
 }
 
 nameFilter();
 
-
 // random naming
 
 async function randomName() {
-    const person = await fetchData();
+	const person = await fetchData();
 
-    const activePerson = person.filter(person => person.name && person.name.trim() !== '');
-    
-    if (activePerson.length === 0) return;
+	const activePerson = person.filter((person) => person.name && person.name.trim() !== "");
 
-    const randomIndex = Math.floor(Math.random() * activePerson.length);
+	if (activePerson.length === 0) return;
 
-    const randomPerson = activePerson[randomIndex];
+	const randomIndex = Math.floor(Math.random() * activePerson.length);
 
-    const nameElement = document.querySelector('.name');
-    const nicknameElement = document.querySelector('.nickname');
-    const bioElement = document.querySelector('.bio');
-    const birthDateElement = document.querySelector('.birthDate');
-    const favEmojiElement = document.querySelector('.favEmoji');
-    const favColorElement = document.querySelector('.favColor');
-    const websiteElement = document.querySelector('.website');
+	const randomPerson = activePerson[randomIndex];
 
-    if (nameElement) {
-        nameElement.textContent = randomPerson.name
-    }
-    console.log(randomPerson.name);
+	const nameElement = document.querySelector(".name");
+	const nicknameElement = document.querySelector(".nickname");
+	const bioElement = document.querySelector(".bio");
+	const birthDateElement = document.querySelector(".birthDate");
+	const favEmojiElement = document.querySelector(".favEmoji");
+	const favColorElement = document.querySelector(".favColor");
+	const websiteElement = document.querySelector(".website");
+	const favAnimalElement = document.querySelector(".favAnimal");
+	const vibeEmojiElement = document.querySelector(".vibeEmoji");
+	const hairColorElement = document.querySelector(".hairColor");
+	const favMusicGenreElement = document.querySelector(".favMusicGenre");
+	const lengthElement = document.querySelector(".length");
 
-    if (nicknameElement) {
-        nicknameElement.textContent = "Nickname: " + (randomPerson.nickname || 'No nickname available.');
-    }
+	if (nameElement) {
+		nameElement.textContent = randomPerson.name;
+	}
+	console.log(randomPerson.name);
 
-    if (bioElement) {
-        bioElement.textContent = "Bio: " + (randomPerson.bio || 'No bio available.');
-    }
+	if (nicknameElement) {
+		nicknameElement.textContent = "Nickname: " + (randomPerson.nickname || "No nickname available.");
+	}
 
-    if (birthDateElement) {
-        birthDateElement.textContent = "Birthday: " + (randomPerson.birthdate || 'Birth date not available.');
-    }
+	if (bioElement) {
+		bioElement.textContent = "Bio: " + (randomPerson.bio || "No bio available.");
+	}
 
-    if (favEmojiElement) {
-        favEmojiElement.textContent = "Favorite Emoji: " + (randomPerson.fav_emoji || 'No favorite emoji available.');
-    }
+	if (birthDateElement) {
+		birthDateElement.textContent = "Birthday: " + (randomPerson.birthdate || "Birth date not available.");
+	}
 
-    if (favColorElement) {
-        const favouriteColorElement = randomPerson.fav_color;
-        favColorElement.textContent = "Favorite Color: " + (randomPerson.fav_color || 'No favorite color available.');
+	if (favEmojiElement) {
+		favEmojiElement.textContent = "Favorite Emoji: " + (randomPerson.fav_emoji || "No favorite emoji available.");
+	}
 
-        favColorElement.style.backgroundColor = favouriteColorElement;
+	if (favAnimalElement) {
+		favAnimalElement.textContent = "Favorite Animal: " + (randomPerson.fav_animal || "No favorite animal available.");
+	}
 
-        favColorElement.style.textShadow = `0 0 100px ${favouriteColorElement}`;
-    } else {
-        favColorElement.style.backgroundColor = 'transparent'
-    }
+	if (vibeEmojiElement) {
+		vibeEmojiElement.textContent = "Vibe Emoji: " + (randomPerson.vibe_emoji || "No vibe emoji available.");
+	}
 
-    if (websiteElement) {
-        websiteElement.textContent = "Website: " + (randomPerson.website || 'No website available.');
-    }
+	if (hairColorElement) {
+		hairColorElement.textContent = "Hair Color: " + (randomPerson.hair_color || "No hair color available.");
+	}
+
+	if (favMusicGenreElement) {
+		favMusicGenreElement.textContent = "Favorite Music Genre: " + (randomPerson.fav_music_genre || "No favorite music genre available.");
+	}
+
+	if (lengthElement) {
+		lengthElement.textContent = "Length: " + (randomPerson.length || "No length available.");
+	}
+
+	if (favColorElement) {
+		const favouriteColorElement = randomPerson.fav_color;
+		const randomProfileBox = document.querySelector(".randomProfile");
+		const randomProfileName = document.querySelector(".name");
+		favColorElement.textContent = "Favorite Color: " + (randomPerson.fav_color || "No favorite color available.");
+
+		favColorElement.style.backgroundColor = favouriteColorElement;
+
+		favColorElement.style.boxShadow = `0 0 10px ${favouriteColorElement}`;
+		randomProfileBox.style.boxShadow = `0 0 20px ${favouriteColorElement}`;
+		randomProfileName.style.color = `${favouriteColorElement}`;
+		// randomProfileName.style.textShadow = `0 0 5px white`;
+	} else {
+		favColorElement.style.backgroundColor = "transparent";
+	}
+
+	if (websiteElement) {
+		websiteElement.textContent = "Website: " + (randomPerson.website || "No website available.");
+	}
 }
 
 randomName();
 
-
-
-
-
-
-
 // Compact header mode on scroll effect
 
-    const header = document.querySelector('header');
+const header = document.querySelector("header");
 
-    let lastY = 0;
+let lastY = 0;
 
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        
-        if (scrollY <= 0 || scrollY < 20) {
-            header.classList.remove('compact');
-        } else if (scrollY > lastY) {
-            header.classList.add('compact');
-        }
-        lastY = scrollY;
-    });
+window.addEventListener("scroll", () => {
+	const scrollY = window.scrollY;
 
-    // Dark mode toggle
-    
-    function toggleDarkMode() {
-        let element = document.body;
-        element.classList.toggle("dark-mode");
-    }
+	if (scrollY <= 0 || scrollY < 20) {
+		header.classList.remove("compact");
+	} else if (scrollY > lastY) {
+		header.classList.add("compact");
+	}
+	lastY = scrollY;
+});
 
-    // Font size toggle
+// Dark mode toggle
 
-    function toggleFontSize() {
-        let element = document.body;
-        element.classList.toggle("large-font");
-    }
+function toggleDarkMode() {
+	let element = document.body;
+	element.classList.toggle("dark-mode");
+}
 
-    // Dyslexia friendly toggle
+// Font size toggle
 
-    function toggleDyslexiaFriendly() {
-        let element = document.body;
-        element.classList.toggle("dyslexia");
-    }
+function toggleFontSize() {
+	let element = document.body;
+	element.classList.toggle("large-font");
+}
 
-    // High contrast toggle
+// Dyslexia friendly toggle
 
-    function toggleHighContrast() {
-        let element = document.body;
-        element.classList.toggle("high-contrast");
-    }
+function toggleDyslexiaFriendly() {
+	let element = document.body;
+	element.classList.toggle("dyslexia");
+}
 
+// High contrast toggle
 
+function toggleHighContrast() {
+	let element = document.body;
+	element.classList.toggle("high-contrast");
+}
 
+// article onClick event effect
 
+const hamburgerMenus = document.querySelector(".hamburgerMenu");
 
+if (hamburgerMenus) {
+	hamburgerMenus.addEventListener("mouseenter", () => {
+		glow.classList.add("hovered");
+	});
+	hamburgerMenus.addEventListener("mouseleave", () => {
+		glow.classList.remove("hovered");
+	});
+}
 
-    // article onClick event effect
+const headerElement = document.querySelector("header");
 
-    const article = document.querySelector('article');
-
-    if (article) {
-        article.addEventListener('mouseenter', () => {
-            glow.classList.add('hovered');
-        });
-        article.addEventListener('mouseleave', () => {
-            glow.classList.remove('hovered');
-        });
-        article.addEventListener('click', () => {
-            article.classList.toggle('clicked');
-        });
-        article.addEventListener('click', () => {
-            glow.classList.toggle('clicked');
-        });
-    }
-
-    const randomProfile = document.querySelector('.randomProfile');
-
-    if (randomProfile) {
-        randomProfile.addEventListener('mouseenter', () => {
-            glow.classList.add('hovered');
-        });
-        randomProfile.addEventListener('mouseleave', () => {
-            glow.classList.remove('hovered');
-        });
-        randomProfile.addEventListener('click', () => {
-            randomProfile.classList.toggle('clicked');
-        });
-        randomProfile.addEventListener('click', () => {
-            glow.classList.toggle('clicked');
-        });
-    }
-
-    const hamburgerMenus = document.querySelector('.hamburgerMenu');
-
-    if (hamburgerMenus) {
-        hamburgerMenus.addEventListener('mouseenter', () => {
-            glow.classList.add('hovered');
-        });
-        hamburgerMenus.addEventListener('mouseleave', () => {
-            glow.classList.remove('hovered');
-        });
-    }
-
-    const headerElement = document.querySelector('header');
-
-    if (headerElement) {
-        headerElement.addEventListener('mouseenter', () => {
-            glow.classList.add('hovered');
-        });
-        headerElement.addEventListener('mouseleave', () => {
-            glow.classList.remove('hovered');
-        });
-    }
-
-
-
-
+if (headerElement) {
+	headerElement.addEventListener("mouseenter", () => {
+		glow.classList.add("hovered");
+	});
+	headerElement.addEventListener("mouseleave", () => {
+		glow.classList.remove("hovered");
+	});
+}
 
 // Mouse glow effect
 
-        const glow = document.querySelector('.mouse-glow');
-        const card = document.querySelector('.glass-card');
+const glow = document.querySelector(".mouse-glow");
+const card = document.querySelector(".glass-card");
 
+document.addEventListener("mousemove", (e) => {
+	glow.style.left = e.clientX + "px";
+	glow.style.top = e.clientY + "px";
 
+	if (card) {
+		const rect = card.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
 
-    document.addEventListener('mousemove', (e) => {
-        glow.style.left = e.clientX + 'px';
-        glow.style.top = e.clientY + 'px';
-
-
-        if (card) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        }
-    })
+		card.style.setProperty("--mouse-x", `${x}px`);
+		card.style.setProperty("--mouse-y", `${y}px`);
+	}
+});
