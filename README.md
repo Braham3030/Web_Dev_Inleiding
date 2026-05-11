@@ -16,6 +16,10 @@
 
 * Added the background for the webpage. Also made tweaks to design and animations. Almost every aspect of the webpage has a certain animation within.
 
+## Day 5
+
+* Slight changes to animations and layout. Added more information per person. Also adjusted naming for certain buttons.
+
 
 ## sources
 
