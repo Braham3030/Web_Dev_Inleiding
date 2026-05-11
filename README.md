@@ -1,5 +1,7 @@
 # Web_Dev_Inleiding
 
+[Website](https://braham3030.github.io/Web_Dev_Inleiding/)
+
 ## Day 1
 
 * Today I made the repository and started to link the javascript and css to html. From here I made further enhancements by adding a header and making the header interactive. I also made a custom pointer using javascript for the location of the element and css to style the element.
